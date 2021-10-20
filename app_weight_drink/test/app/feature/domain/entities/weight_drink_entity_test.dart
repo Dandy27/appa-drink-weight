@@ -7,7 +7,7 @@ void main() {
       quantDoses: 12,
       pesoBruto: 1200,
       tara: 487.5,
-      pesoGrfAberta: 400);
+      pesoGrfAberta: 660);
 
   test('deve retornar o calculo', () {
     expect(tWeightDrinkEntity.calculate, 2.91);
