@@ -5,3 +5,9 @@ class WeightDrinkException implements Failure {
 
   WeightDrinkException({required this.message});
 }
+
+class InvaidPesoBruto implements Failure {}
+
+class InvalidPesoGrfAberta implements Failure {}
+
+class InvalidQuantDoses implements Failure{}
