@@ -1,7 +1,7 @@
-import 'package:app_weight_drink/app/feature/domain/errors/failure.dart';
-import 'package:fpdart/fpdart.dart';
-
-class WeightDrinkEntity {
+import 'package:equatable/equatable.dart';
+ 
+// ignore: must_be_immutable
+class WeightDrinkEntity extends Equatable {
   double pesoLiquido;
   int quantDoses;
   double pesoBruto;
@@ -15,23 +15,20 @@ class WeightDrinkEntity {
     required this.tara,
     required this.pesoGrfAberta,
   });
-
   get calculate {
     var total =
-        ((pesoGrfAberta - tara) * quantDoses / (pesoBruto - tara) * 100);
-
-    if (pesoBruto < pesoGrfAberta) {
-      return Left(InvaidPesoBruto());
-    }
-    if (pesoGrfAberta < tara) {
-      return Left(InvalidPesoGrfAberta());
-    }
-    if (quantDoses < 1) {
-      return Left(InvalidQuantDoses());
-    }
-    if (quantDoses > 30) {
-      return Left(InvalidQuantDoses());
-    }
+        (((pesoGrfAberta - tara) * quantDoses / (pesoBruto - tara) * 100) );
     return total.roundToDouble() / 100;
+  }
+
+  @override
+  List<Object?> get props {
+    return [
+      pesoLiquido,
+      quantDoses,
+      pesoBruto,
+      tara,
+      pesoGrfAberta,
+    ];
   }
 }
