@@ -3,5 +3,5 @@ import 'package:app_weight_drink/app/feature/domain/entities/weight_drink_entity
 import 'package:fpdart/fpdart.dart';
 
 abstract class WeightDrinkRepository {
-  Future<Either<Failure, WeightDrinkEntity>> getWeightDrinkEntity();
+  Future<Either<Failure, WeightDrinkEntity>> getWeightDrinkEntity(int id);
 }

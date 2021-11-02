@@ -18,19 +18,22 @@ void main() {
   });
 
   final tWeightDrink = WeightDrinkEntity(
-      pesoLiquido: 712.5,
-      quantDoses: 12,
-      pesoBruto: 1200,
-      tara: 487.5,
-      pesoGrfAberta: 660);
+    id: 1,
+    nameDrink: 'Tequila',
+    pesoLiquido: 712.5,
+    quantDoses: 12,
+    pesoBruto: 1200,
+    tara: 457.5,
+    pesoGrfAberta: 660,
+  );
 
-  final tNoParams = NoParams();
-
-  test('deve retornar o calculo para os parametros', () async {
-    when(() => repository.getWeightDrinkEntity())
+  final tNoParamns = NoParams();
+  test('deve retornar a entidade quando chamar o repository', () async {
+    when(() => repository.getWeightDrinkEntity(1))
         .thenAnswer((_) async => Right(tWeightDrink));
-    final result = await usecase(tNoParams);
+    final result = await usecase(1);
     expect(result, Right(tWeightDrink));
-    verify(() => repository.getWeightDrinkEntity());
+    verify(() => repository.getWeightDrinkEntity(1));
   });
+
 }

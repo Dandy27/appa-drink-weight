@@ -4,12 +4,12 @@ import 'package:app_weight_drink/app/feature/domain/entities/weight_drink_entity
 import 'package:app_weight_drink/app/feature/domain/repositories/weight_drink_repository.dart';
 import 'package:fpdart/fpdart.dart';
 
-class GetWeightDrinkUsecase implements Usecase<WeightDrinkEntity, NoParams> {
+class GetWeightDrinkUsecase implements Usecase<WeightDrinkEntity, int> {
   final WeightDrinkRepository repository;
 
   GetWeightDrinkUsecase(this.repository);
   @override
-  Future<Either<Failure, WeightDrinkEntity>> call(NoParams params) async {
-    return await repository.getWeightDrinkEntity();
+  Future<Either<Failure, WeightDrinkEntity>> call(int id) async {
+    return await repository.getWeightDrinkEntity(id);
   }
 }
